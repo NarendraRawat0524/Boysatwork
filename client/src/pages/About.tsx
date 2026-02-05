@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Users, Target, Award, Shield, Clock, Heart } from "lucide-react";
 import { businessInfo } from "@/lib/services";
+import { useSEO } from "@/hooks/useSEO";
 
 const stats = [
   { value: "15,000+", label: "Happy Customers" },
@@ -44,6 +45,11 @@ const team = [
 ];
 
 export default function About() {
+  useSEO({
+    title: "About Us",
+    description: "Learn about Boysatwork.in - Delhi NCR's trusted home service provider. 15,000+ happy customers, 50+ expert technicians, and 4.8 average rating.",
+  });
+
   return (
     <div className="py-12">
       <div className="container mx-auto px-4">

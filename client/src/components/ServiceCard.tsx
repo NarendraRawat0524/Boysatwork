@@ -58,13 +58,13 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
         </div>
 
         <div className="flex items-center gap-2">
-          <Link href={`/services/${service.id}`} className="flex-1">
+          <Link href={`/services/${service.id}`} className="flex-1" data-testid={`link-service-${service.id}`}>
             <Button variant="outline" className="w-full" data-testid={`button-view-${service.id}`}>
               View Services
               <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
           </Link>
-          <Link href={`/book?service=${service.id}`}>
+          <Link href={`/book?service=${service.id}`} data-testid={`link-book-${service.id}`}>
             <Button data-testid={`button-book-${service.id}`}>Book</Button>
           </Link>
         </div>

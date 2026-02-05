@@ -2,8 +2,14 @@ import { useSearch } from "wouter";
 import { Badge } from "@/components/ui/badge";
 import BookingForm from "@/components/BookingForm";
 import { businessInfo } from "@/lib/services";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Booking() {
+  useSEO({
+    title: "Book a Service",
+    description: "Book professional home services online. Fill the form and our team will confirm your booking within 30 minutes. Same-day service available.",
+  });
+
   const searchString = useSearch();
   const params = new URLSearchParams(searchString);
   const serviceId = params.get("service") || undefined;

@@ -29,6 +29,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="h-10 w-10 rounded-full bg-[#25D366] flex items-center justify-center hover:opacity-90 transition-opacity"
+                aria-label="Chat on WhatsApp"
                 data-testid="link-whatsapp-footer"
               >
                 <SiWhatsapp className="h-5 w-5 text-white" />
@@ -36,6 +37,7 @@ export default function Footer() {
               <a
                 href={`tel:${businessInfo.phone}`}
                 className="h-10 w-10 rounded-full bg-primary flex items-center justify-center hover:opacity-90 transition-opacity"
+                aria-label="Call us"
                 data-testid="link-phone-footer"
               >
                 <Phone className="h-5 w-5 text-primary-foreground" />

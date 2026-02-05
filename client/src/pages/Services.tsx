@@ -1,8 +1,14 @@
 import { Badge } from "@/components/ui/badge";
 import ServiceCard from "@/components/ServiceCard";
 import { services } from "@/lib/services";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Services() {
+  useSEO({
+    title: "All Services",
+    description: "Browse all home services - Plumbing, Electrical, Carpentry, Painting, AC Service, Building Maintenance, Property Management, and Facility Management in Delhi NCR.",
+  });
+
   return (
     <div className="py-12">
       <div className="container mx-auto px-4">

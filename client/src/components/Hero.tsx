@@ -42,12 +42,12 @@ export default function Hero() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Link href="/services">
+              <Link href="/services" data-testid="link-explore-services">
                 <Button size="lg" className="text-base px-8" data-testid="button-explore-services">
                   Explore Services
                 </Button>
               </Link>
-              <Link href="/book">
+              <Link href="/book" data-testid="link-book-hero">
                 <Button size="lg" variant="outline" className="text-base px-8" data-testid="button-book-service-hero">
                   Book Now
                 </Button>

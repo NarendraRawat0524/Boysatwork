@@ -6,6 +6,7 @@ import { Star, ArrowRight, Shield, Clock, Wallet, Headphones } from "lucide-reac
 import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
 import { services, businessInfo } from "@/lib/services";
+import { useSEO } from "@/hooks/useSEO";
 
 const whyChooseUs = [
   {
@@ -55,6 +56,11 @@ const testimonials = [
 ];
 
 export default function Home() {
+  useSEO({
+    title: "Home",
+    description: "Book trusted home services in Delhi NCR - Plumbers, Electricians, Carpenters, Painters, AC Technicians & more. Professional, reliable & affordable. Call 9811797407.",
+  });
+
   return (
     <div>
       <Hero />
@@ -79,7 +85,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-10">
-            <Link href="/services">
+            <Link href="/services" data-testid="link-view-all-services">
               <Button variant="outline" size="lg" data-testid="button-view-all-services">
                 View All Services
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -139,9 +145,9 @@ export default function Home() {
                     ))}
                   </div>
                   <p className="text-muted-foreground mb-4 italic">"{testimonial.text}"</p>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between gap-2">
                     <div>
-                      <p className="font-semibold">{testimonial.name}</p>
+                      <p className="font-semibold" data-testid={`text-testimonial-name-${index}`}>{testimonial.name}</p>
                       <p className="text-sm text-muted-foreground">{testimonial.location}</p>
                     </div>
                     <Badge variant="outline">{testimonial.service}</Badge>
@@ -162,7 +168,7 @@ export default function Home() {
             Get expert help for your home in just a few clicks. Same-day service available.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/book">
+            <Link href="/book" data-testid="link-book-cta">
               <Button
                 size="lg"
                 variant="secondary"
@@ -172,7 +178,7 @@ export default function Home() {
                 Book Now
               </Button>
             </Link>
-            <a href={`tel:${businessInfo.phone}`}>
+            <a href={`tel:${businessInfo.phone}`} data-testid="link-call-cta">
               <Button
                 size="lg"
                 variant="outline"

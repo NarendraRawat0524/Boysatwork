@@ -80,8 +80,8 @@ export default function Header() {
               </Button>
             </Link>
 
-            <a href={`tel:${businessInfo.phone}`} className="lg:hidden">
-              <Button variant="outline" size="icon" data-testid="button-call-mobile">
+            <a href={`tel:${businessInfo.phone}`} className="lg:hidden" aria-label="Call us">
+              <Button variant="outline" size="icon" data-testid="button-call-mobile" aria-label="Call us">
                 <Phone className="h-4 w-4" />
               </Button>
             </a>

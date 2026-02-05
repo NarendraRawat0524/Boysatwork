@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import { businessInfo } from "@/lib/services";
+import { useSEO } from "@/hooks/useSEO";
 
 const contactMethods = [
   {
@@ -64,6 +65,11 @@ const faqs = [
 ];
 
 export default function Contact() {
+  useSEO({
+    title: "Contact Us",
+    description: "Get in touch with Boysatwork.in. Call +91 9811797407, WhatsApp, or visit us at Lajpat Nagar 4, New Delhi. We respond within 30 minutes.",
+  });
+
   return (
     <div className="py-12">
       <div className="container mx-auto px-4">

@@ -5,11 +5,17 @@ import { Badge } from "@/components/ui/badge";
 import { Star, Clock, Check, ArrowLeft, Phone, IndianRupee } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import { getServiceById, businessInfo } from "@/lib/services";
+import { useSEO } from "@/hooks/useSEO";
 import NotFound from "./not-found";
 
 export default function ServiceDetails() {
   const { id } = useParams<{ id: string }>();
   const service = id ? getServiceById(id) : null;
+
+  useSEO({
+    title: service?.shortName || "Service Details",
+    description: service?.description || "Professional home services in Delhi NCR with verified technicians and transparent pricing.",
+  });
 
   if (!service) {
     return <NotFound />;
@@ -68,7 +74,7 @@ export default function ServiceDetails() {
                 {service.subServices.map((sub) => (
                   <Card key={sub.id} className="hover-elevate">
                     <CardContent className="p-4 md:p-6">
-                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4" data-testid={`card-subservice-${sub.id}`}>
                         <div className="flex-1">
                           <h3 className="font-semibold text-lg mb-1">{sub.name}</h3>
                           <p className="text-sm text-muted-foreground mb-2">{sub.description}</p>
@@ -134,13 +140,15 @@ export default function ServiceDetails() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1"
+                      aria-label="Chat on WhatsApp"
+                      data-testid="link-whatsapp-sidebar"
                     >
                       <Button variant="outline" className="w-full" data-testid="button-whatsapp-sidebar">
                         <SiWhatsapp className="mr-2 h-4 w-4" />
                         WhatsApp
                       </Button>
                     </a>
-                    <a href={`tel:${businessInfo.phone}`} className="flex-1">
+                    <a href={`tel:${businessInfo.phone}`} className="flex-1" aria-label="Call us" data-testid="link-call-sidebar">
                       <Button variant="outline" className="w-full" data-testid="button-call-sidebar">
                         <Phone className="mr-2 h-4 w-4" />
                         Call Now
