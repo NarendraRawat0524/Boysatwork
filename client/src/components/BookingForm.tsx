@@ -117,21 +117,38 @@ export default function BookingForm({ preselectedServiceId, preselectedSubServic
       additionalNotes: data.additionalNotes || "",
     };
 
+    // Create WhatsApp message with booking details
+    const whatsappMessage = `🔔 *New Booking Request*
+
+*Customer Details:*
+👤 Name: ${formData.customerName}
+📞 Phone: ${formData.customerPhone}
+📧 Email: ${formData.customerEmail}
+📍 Address: ${formData.customerAddress}
+
+*Service Details:*
+🔧 Service: ${formData.serviceName}
+📋 Sub-Service: ${formData.subServiceName}
+📅 Preferred Date: ${formData.preferredDate}
+⏰ Preferred Time: ${formData.preferredTime}
+
+${formData.additionalNotes ? `📝 Notes: ${formData.additionalNotes}` : ""}
+
+_Sent via Boysatwork.in_`;
+
+    // Send to WhatsApp
+    const whatsappUrl = `https://wa.me/${businessInfo.whatsapp}?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, "_blank");
+
+    // Also try email if configured
     if (isEmailJSConfigured()) {
-      const success = await sendBookingEmail(formData);
-      if (success) {
-        setShowSuccessModal(true);
-        form.reset();
-      } else {
-        setErrorMessage("Failed to send booking request. Please try calling us directly.");
-        setShowErrorModal(true);
-      }
+      await sendBookingEmail(formData);
     } else {
       console.log("EmailJS not configured. Booking data:", formData);
-      setShowSuccessModal(true);
-      form.reset();
     }
 
+    setShowSuccessModal(true);
+    form.reset();
     setIsSubmitting(false);
   };
 
@@ -385,9 +402,9 @@ export default function BookingForm({ preselectedServiceId, preselectedSubServic
             <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
               <CheckCircle2 className="h-8 w-8 text-green-600 dark:text-green-400" />
             </div>
-            <DialogTitle className="text-center text-xl">Booking Confirmed!</DialogTitle>
+            <DialogTitle className="text-center text-xl">Booking Request Sent!</DialogTitle>
             <DialogDescription className="text-center">
-              Thank you for your booking. Our team will contact you within 30 minutes to confirm the details.
+              Your booking details have been sent via WhatsApp. Please send the message to complete your booking. Our team will contact you within 30 minutes to confirm.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 pt-4">
