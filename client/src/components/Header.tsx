@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Phone, MapPin, X } from "lucide-react";
+import { Menu, Phone, MapPin } from "lucide-react";
+import { SiInstagram } from "react-icons/si";
 import { businessInfo } from "@/lib/services";
 
 export default function Header() {
@@ -12,6 +13,7 @@ export default function Header() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
+    { href: "/blog", label: "Blog" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ];
@@ -39,8 +41,21 @@ export default function Header() {
               <span>{businessInfo.landmark}</span>
             </div>
           </div>
-          <div className="text-sm opacity-90">
-            Trusted Home Services in Delhi NCR
+          <div className="flex items-center gap-4">
+            <span className="text-sm opacity-90">
+              Trusted Home Services in Delhi NCR
+            </span>
+            <a
+              href="https://www.instagram.com/boysatwork.official/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:opacity-80 transition-opacity"
+              aria-label="Follow us on Instagram"
+              data-testid="link-instagram-topbar"
+            >
+              <SiInstagram className="h-3.5 w-3.5" />
+              <span className="text-xs">Follow Us</span>
+            </a>
           </div>
         </div>
       </div>
@@ -74,6 +89,18 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
+            <a
+              href="https://www.instagram.com/boysatwork.official/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lg:hidden"
+              aria-label="Follow us on Instagram"
+            >
+              <Button variant="outline" size="icon" data-testid="button-instagram-mobile">
+                <SiInstagram className="h-4 w-4" />
+              </Button>
+            </a>
+
             <Link href="/book" className="hidden sm:block">
               <Button data-testid="button-book-now-header">
                 Book Now
@@ -123,6 +150,19 @@ export default function Header() {
                         Book a Service
                       </Button>
                     </Link>
+                  </div>
+
+                  <div className="mt-6">
+                    <a
+                      href="https://www.instagram.com/boysatwork.official/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      data-testid="link-instagram-mobile-menu"
+                    >
+                      <SiInstagram className="h-4 w-4" />
+                      <span>Follow us on Instagram</span>
+                    </a>
                   </div>
 
                   <div className="mt-auto pt-8 border-t">

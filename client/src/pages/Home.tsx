@@ -2,11 +2,13 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, ArrowRight, Shield, Clock, Wallet, Headphones } from "lucide-react";
-import Hero from "@/components/Hero";
+import { Star, ArrowRight, Shield, Clock, Wallet, Headphones, Calendar, User as UserIcon, Quote } from "lucide-react";
+import HeroCarousel from "@/components/HeroCarousel";
 import ServiceCard from "@/components/ServiceCard";
 import { services, businessInfo } from "@/lib/services";
+import { getLatestBlogPosts } from "@/lib/blogPosts";
 import { useSEO } from "@/hooks/useSEO";
+import { format } from "date-fns";
 
 const whyChooseUs = [
   {
@@ -53,7 +55,40 @@ const testimonials = [
     text: "The carpenter did an amazing job with our wardrobe repair. Very reasonable prices too.",
     service: "Carpentry",
   },
+  {
+    name: "Vikram Singh",
+    location: "Greater Kailash",
+    rating: 4,
+    text: "Prompt and professional painting service. They completed the entire 3BHK in just 3 days. Great quality work!",
+    service: "Painting",
+  },
+  {
+    name: "Meena Gupta",
+    location: "Saket",
+    rating: 5,
+    text: "Deep cleaning service was exceptional. My house looks brand new. The team was very polite and efficient.",
+    service: "Deep Cleaning",
+  },
+  {
+    name: "Amit Joshi",
+    location: "Vasant Kunj",
+    rating: 5,
+    text: "Called for electrical wiring issue at 8pm and they sent someone within an hour. Fantastic emergency service!",
+    service: "Electrical",
+  },
 ];
+
+const overallRating = {
+  score: 4.8,
+  total: 2340,
+  breakdown: [
+    { stars: 5, percent: 78 },
+    { stars: 4, percent: 15 },
+    { stars: 3, percent: 5 },
+    { stars: 2, percent: 1 },
+    { stars: 1, percent: 1 },
+  ],
+};
 
 export default function Home() {
   useSEO({
@@ -61,9 +96,11 @@ export default function Home() {
     description: "Book trusted home services in Delhi NCR - Plumbers, Electricians, Carpenters, Painters, AC Technicians & more. Professional, reliable & affordable. Call 9811797407.",
   });
 
+  const latestPosts = getLatestBlogPosts(2);
+
   return (
     <div>
-      <Hero />
+      <HeroCarousel />
 
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
@@ -123,7 +160,76 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-background" data-testid="section-latest-posts">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <Badge variant="secondary" className="mb-4">Latest Posts</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              From Our Blog
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Expert tips, guides, and insights to help you maintain your home better
+            </p>
+          </div>
+
+          {latestPosts.map((post, index) => (
+            <div
+              key={post.id}
+              className={`flex flex-col ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} gap-8 items-center ${
+                index > 0 ? "mt-12" : ""
+              }`}
+              data-testid={`blog-preview-${post.id}`}
+            >
+              <div className="md:w-1/2">
+                <div className="rounded-md overflow-hidden shadow-lg">
+                  <img
+                    src={post.coverImage}
+                    alt={post.title}
+                    className="w-full h-64 md:h-80 object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div className="md:w-1/2 space-y-4">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <Badge variant="outline">{post.category}</Badge>
+                  <span className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <Calendar className="h-3.5 w-3.5" />
+                    {format(new Date(post.date), "MMM dd, yyyy")}
+                  </span>
+                  <span className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <UserIcon className="h-3.5 w-3.5" />
+                    {post.author}
+                  </span>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold leading-tight" data-testid={`text-blog-preview-title-${post.id}`}>
+                  {post.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {post.excerpt}
+                </p>
+                <Link href={`/blog/${post.slug}`}>
+                  <Button variant="outline" data-testid={`button-read-more-home-${post.id}`}>
+                    Read More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          ))}
+
+          <div className="text-center mt-12">
+            <Link href="/blog">
+              <Button variant="outline" size="lg" data-testid="button-view-all-blogs">
+                View All Blog Posts
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-muted/30" data-testid="section-testimonials">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <Badge variant="secondary" className="mb-4">Testimonials</Badge>
@@ -135,22 +241,104 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="hover-elevate">
-                <CardContent className="pt-6">
-                  <div className="flex items-center gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-muted-foreground mb-4 italic">"{testimonial.text}"</p>
-                  <div className="flex items-center justify-between gap-2">
-                    <div>
-                      <p className="font-semibold" data-testid={`text-testimonial-name-${index}`}>{testimonial.name}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+            <Card className="lg:col-span-1">
+              <CardContent className="p-6 flex flex-col items-center justify-center h-full text-center">
+                <div className="text-5xl font-bold text-foreground mb-2" data-testid="text-overall-rating">
+                  {overallRating.score}
+                </div>
+                <div className="flex items-center gap-1 mb-2">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star
+                      key={i}
+                      className={`h-5 w-5 ${
+                        i <= Math.round(overallRating.score)
+                          ? "fill-yellow-400 text-yellow-400 dark:fill-yellow-300 dark:text-yellow-300"
+                          : "text-muted-foreground/30"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Based on {overallRating.total.toLocaleString()} reviews
+                </p>
+                <div className="w-full space-y-2">
+                  {overallRating.breakdown.map((item) => (
+                    <div key={item.stars} className="flex items-center gap-2 text-sm">
+                      <span className="w-8 text-right text-muted-foreground">{item.stars}</span>
+                      <Star className="h-3 w-3 fill-yellow-400 text-yellow-400 dark:fill-yellow-300 dark:text-yellow-300" />
+                      <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-yellow-400 dark:bg-yellow-300 rounded-full"
+                          style={{ width: `${item.percent}%` }}
+                        />
+                      </div>
+                      <span className="w-10 text-right text-muted-foreground">{item.percent}%</span>
                     </div>
-                    <Badge variant="outline">{testimonial.service}</Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="lg:col-span-2 grid md:grid-cols-2 gap-6">
+              {testimonials.slice(0, 4).map((testimonial, index) => (
+                <Card key={index} className="hover-elevate">
+                  <CardContent className="pt-6">
+                    <Quote className="h-6 w-6 text-muted-foreground/40 mb-3" />
+                    <div className="flex items-center gap-1 mb-3">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`h-4 w-4 ${
+                            i < testimonial.rating
+                              ? "fill-yellow-400 text-yellow-400 dark:fill-yellow-300 dark:text-yellow-300"
+                              : "text-muted-foreground/30"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground mb-4 text-sm leading-relaxed">"{testimonial.text}"</p>
+                    <div className="flex items-center justify-between gap-2 flex-wrap">
+                      <div>
+                        <p className="font-semibold text-sm" data-testid={`text-testimonial-name-${index}`}>{testimonial.name}</p>
+                        <p className="text-xs text-muted-foreground">{testimonial.location}</p>
+                      </div>
+                      <Badge variant="outline" className="text-xs">{testimonial.service}</Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {testimonials.slice(4).map((testimonial, index) => (
+              <Card key={index + 4} className="hover-elevate">
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-4">
+                    <Quote className="h-6 w-6 text-muted-foreground/40 flex-shrink-0 mt-1" />
+                    <div className="flex-1">
+                      <div className="flex items-center gap-1 mb-2">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`h-4 w-4 ${
+                              i < testimonial.rating
+                                ? "fill-yellow-400 text-yellow-400 dark:fill-yellow-300 dark:text-yellow-300"
+                                : "text-muted-foreground/30"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      <p className="text-muted-foreground mb-3 text-sm">"{testimonial.text}"</p>
+                      <div className="flex items-center justify-between gap-2 flex-wrap">
+                        <div>
+                          <p className="font-semibold text-sm" data-testid={`text-testimonial-name-${index + 4}`}>{testimonial.name}</p>
+                          <p className="text-xs text-muted-foreground">{testimonial.location}</p>
+                        </div>
+                        <Badge variant="outline" className="text-xs">{testimonial.service}</Badge>
+                      </div>
+                    </div>
                   </div>
                 </CardContent>
               </Card>

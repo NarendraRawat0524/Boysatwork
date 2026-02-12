@@ -12,6 +12,8 @@ import ServiceDetails from "@/pages/ServiceDetails";
 import Booking from "@/pages/Booking";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
+import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
 import NotFound from "@/pages/not-found";
 import { initEmailJS } from "@/lib/emailjs";
 
@@ -26,6 +28,8 @@ function Router() {
       <Route path="/book" component={Booking} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={BlogPost} />
       <Route component={NotFound} />
     </Switch>
   );

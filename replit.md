@@ -53,9 +53,13 @@ shared/           # Shared code between client/server
 
 **Static Service Data**: Service catalog (plumbing, electrical, etc.) is defined as static TypeScript objects in `client/src/lib/services.ts` rather than database tables. This simplifies the initial implementation while allowing future migration to database-driven content.
 
-**Email-Based Bookings**: Booking submissions are sent via EmailJS client-side rather than stored in a database. This provides immediate notification to the business owner without requiring backend booking management infrastructure.
+**Email + WhatsApp Bookings**: Booking submissions open WhatsApp with pre-filled booking details to the business owner's number. EmailJS is also supported as a secondary channel when configured.
+
+**Static Blog Data**: Blog posts are defined as static TypeScript objects in `client/src/lib/blogPosts.ts`. New posts can be added by editing this file. Each post has slug-based routing at `/blog/:slug`.
 
 **Component Architecture**: Uses shadcn/ui's copy-paste component model where UI primitives live in `client/src/components/ui/` and can be customized directly.
+
+**Hero Carousel**: Homepage uses a 3-slide auto-rotating carousel (`HeroCarousel.tsx`) with bold taglines, dark wash over images, and CTA buttons. Auto-rotates every 5 seconds.
 
 ## External Dependencies
 
@@ -69,7 +73,8 @@ shared/           # Shared code between client/server
 - **PostgreSQL**: Required for production. Connection string provided via `DATABASE_URL` environment variable.
 
 ### External APIs
-- **WhatsApp**: Deep links to WhatsApp for customer communication (no API integration, just URL scheme)
+- **WhatsApp**: Deep links to WhatsApp for customer communication and booking notifications (URL scheme, no API)
+- **Instagram**: Social media link to https://www.instagram.com/boysatwork.official/ (in header top bar, mobile, and footer)
 - **Google Fonts**: Plus Jakarta Sans and other fonts loaded via CDN
 
 ### Key npm Dependencies

@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
+import { SiWhatsapp, SiInstagram } from "react-icons/si";
 import { businessInfo, services } from "@/lib/services";
 
 export default function Footer() {
@@ -33,6 +33,16 @@ export default function Footer() {
                 data-testid="link-whatsapp-footer"
               >
                 <SiWhatsapp className="h-5 w-5 text-white" />
+              </a>
+              <a
+                href="https://www.instagram.com/boysatwork.official/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-gradient-to-br from-[#f09433] via-[#e6683c] to-[#bc1888] flex items-center justify-center hover:opacity-90 transition-opacity"
+                aria-label="Follow us on Instagram"
+                data-testid="link-instagram-footer"
+              >
+                <SiInstagram className="h-5 w-5 text-white" />
               </a>
               <a
                 href={`tel:${businessInfo.phone}`}
@@ -83,6 +93,11 @@ export default function Footer() {
               <li>
                 <Link href="/contact" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
                   Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
+                  Blog
                 </Link>
               </li>
               <li>
