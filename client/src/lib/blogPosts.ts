@@ -287,7 +287,7 @@ export const blogPosts: BlogPost[] = [
     slug: "choosing-right-ac-service-delhi",
     title: "How to Choose the Right AC Service Provider in Delhi",
     excerpt: "With Delhi summers reaching 45+ degrees, a well-functioning AC is essential. Here's what to look for when choosing an AC service provider.",
-    coverImage: "https://images.unsplash.com/photo-1631545806609-8f5c97a37e8f?w=800&h=500&fit=crop",
+    coverImage: "/images/blog-ac-service.jpg",
     author: "Boys@Work Team",
     date: "2025-10-10",
     category: "AC Service",
