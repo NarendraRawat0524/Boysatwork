@@ -70,11 +70,11 @@ export default function HeroCarousel() {
                 alt={`${slide.tagline} ${slide.highlight}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
             </div>
 
-            <div className="relative h-full container mx-auto px-4 flex items-center">
-              <div className="max-w-2xl space-y-6">
+            <div className="relative h-full container mx-auto px-4 flex items-center justify-center">
+              <div className="max-w-2xl space-y-6 text-center">
                 <h1
                   className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight transition-transform duration-700 ${
                     index === current ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
@@ -85,7 +85,7 @@ export default function HeroCarousel() {
                   <span className="text-primary block mt-1">{slide.highlight}</span>
                 </h1>
                 <p
-                  className={`text-lg md:text-xl text-white/90 max-w-xl transition-transform duration-700 ${
+                  className={`text-lg md:text-xl text-white/90 max-w-xl mx-auto transition-transform duration-700 ${
                     index === current ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                   }`}
                   style={{ transitionDelay: "400ms" }}
@@ -93,7 +93,7 @@ export default function HeroCarousel() {
                   {slide.subtitle}
                 </p>
                 <div
-                  className={`flex flex-wrap gap-4 transition-transform duration-700 ${
+                  className={`flex flex-wrap justify-center gap-4 transition-transform duration-700 ${
                     index === current ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                   }`}
                   style={{ transitionDelay: "600ms" }}

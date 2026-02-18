@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Phone, MapPin } from "lucide-react";
-import { SiInstagram } from "react-icons/si";
+import { SiInstagram, SiWhatsapp } from "react-icons/si";
 import { businessInfo } from "@/lib/services";
 
 export default function Header() {
@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
       <div className="hidden lg:block bg-primary text-primary-foreground py-1.5">
-        <div className="container mx-auto px-4 flex items-center justify-between text-sm">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between text-sm">
           <div className="flex items-center gap-6">
             <a
               href={`tel:${businessInfo.phone}`}
@@ -60,7 +60,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex h-16 items-center justify-between gap-4">
           <Link href="/" data-testid="link-logo">
             <div className="flex items-center gap-2">
@@ -88,27 +88,33 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 flex-wrap">
+            <a
+              href={`https://wa.me/${businessInfo.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
+              data-testid="link-whatsapp-header"
+            >
+              <Button variant="ghost" size="icon">
+                <SiWhatsapp className="h-4 w-4" />
+              </Button>
+            </a>
+
             <a
               href="https://www.instagram.com/boysatwork.official/"
               target="_blank"
               rel="noopener noreferrer"
-              className="lg:hidden"
               aria-label="Follow us on Instagram"
+              data-testid="link-instagram-header"
             >
-              <Button variant="outline" size="icon" data-testid="button-instagram-mobile">
+              <Button variant="ghost" size="icon">
                 <SiInstagram className="h-4 w-4" />
               </Button>
             </a>
 
-            <Link href="/book" className="hidden sm:block">
-              <Button data-testid="button-book-now-header">
-                Book Now
-              </Button>
-            </Link>
-
-            <a href={`tel:${businessInfo.phone}`} className="lg:hidden" aria-label="Call us">
-              <Button variant="outline" size="icon" data-testid="button-call-mobile" aria-label="Call us">
+            <a href={`tel:${businessInfo.phone}`} aria-label="Call us" data-testid="link-call-header">
+              <Button variant="ghost" size="icon">
                 <Phone className="h-4 w-4" />
               </Button>
             </a>
@@ -152,7 +158,17 @@ export default function Header() {
                     </Link>
                   </div>
 
-                  <div className="mt-6">
+                  <div className="mt-6 flex items-center gap-3">
+                    <a
+                      href={`https://wa.me/${businessInfo.whatsapp}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      data-testid="link-whatsapp-mobile-menu"
+                    >
+                      <SiWhatsapp className="h-4 w-4" />
+                      <span>WhatsApp</span>
+                    </a>
                     <a
                       href="https://www.instagram.com/boysatwork.official/"
                       target="_blank"
@@ -161,7 +177,7 @@ export default function Header() {
                       data-testid="link-instagram-mobile-menu"
                     >
                       <SiInstagram className="h-4 w-4" />
-                      <span>Follow us on Instagram</span>
+                      <span>Instagram</span>
                     </a>
                   </div>
 

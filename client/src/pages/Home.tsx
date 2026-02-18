@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, ArrowRight, Shield, Clock, Wallet, Headphones, Calendar, User as UserIcon, Quote } from "lucide-react";
 import HeroCarousel from "@/components/HeroCarousel";
+import StatsCounter from "@/components/StatsCounter";
 import ServiceCard from "@/components/ServiceCard";
 import { services, businessInfo } from "@/lib/services";
 import { getLatestBlogPosts } from "@/lib/blogPosts";
@@ -101,6 +102,8 @@ export default function Home() {
   return (
     <div>
       <HeroCarousel />
+
+      <StatsCounter />
 
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
@@ -360,7 +363,6 @@ export default function Home() {
               <Button
                 size="lg"
                 variant="secondary"
-                className="text-base px-8"
                 data-testid="button-book-cta"
               >
                 Book Now
@@ -370,7 +372,7 @@ export default function Home() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-base px-8 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                className="border-primary-foreground/30 text-primary-foreground"
                 data-testid="button-call-cta"
               >
                 Call +91 {businessInfo.phone}
