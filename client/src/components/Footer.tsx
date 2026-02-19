@@ -56,7 +56,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-lg mb-4">Our Services</h3>
+            <h3 className="font-heading font-extrabold text-lg mb-4">Our Services</h3>
             <ul className="space-y-2">
               {services.slice(0, 6).map((service) => (
                 <li key={service.id}>
@@ -73,7 +73,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
+            <h3 className="font-heading font-extrabold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
@@ -109,7 +109,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-lg mb-4">Contact Info</h3>
+            <h3 className="font-heading font-extrabold text-lg mb-4">Contact Info</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <Phone className="h-4 w-4 mt-0.5 flex-shrink-0 opacity-70" />

@@ -18,7 +18,7 @@ export default function Blog() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <Badge variant="secondary" className="mb-4">Our Blog</Badge>
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-heading font-extrabold mb-4">
             Latest Tips & Insights
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -45,7 +45,7 @@ export default function Blog() {
                     {post.readTime}
                   </span>
                 </div>
-                <h2 className="font-semibold text-lg mb-2 line-clamp-2" data-testid={`text-blog-title-${post.id}`}>
+                <h2 className="font-heading font-extrabold text-lg mb-2 line-clamp-2" data-testid={`text-blog-title-${post.id}`}>
                   {post.title}
                 </h2>
                 <p className="text-sm text-muted-foreground mb-4 line-clamp-3">

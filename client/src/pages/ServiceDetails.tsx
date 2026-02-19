@@ -60,7 +60,7 @@ export default function ServiceDetails() {
             </div>
 
             <div>
-              <h2 className="text-xl font-semibold mb-4">About This Service</h2>
+              <h2 className="text-xl font-heading font-extrabold mb-4">About This Service</h2>
               <p className="text-muted-foreground leading-relaxed">
                 {service.description} Our experienced professionals ensure quality work with
                 complete satisfaction guarantee. All services include standard safety measures
@@ -69,7 +69,7 @@ export default function ServiceDetails() {
             </div>
 
             <div>
-              <h2 className="text-xl font-semibold mb-6">Available Services & Pricing</h2>
+              <h2 className="text-xl font-heading font-extrabold mb-6">Available Services & Pricing</h2>
               <div className="grid gap-4">
                 {service.subServices.map((sub) => (
                   <Card key={sub.id} className="hover-elevate">
@@ -100,7 +100,7 @@ export default function ServiceDetails() {
             </div>
 
             <div>
-              <h2 className="text-xl font-semibold mb-4">What's Included</h2>
+              <h2 className="text-xl font-heading font-extrabold mb-4">What's Included</h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
                   "Expert technician visit",
@@ -123,7 +123,7 @@ export default function ServiceDetails() {
             <div className="sticky top-24 space-y-6">
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg mb-4">Quick Booking</h3>
+                  <h3 className="font-heading font-extrabold text-lg mb-4">Quick Booking</h3>
                   <p className="text-sm text-muted-foreground mb-6">
                     Book now and our expert will reach you within 2 hours (subject to availability)
                   </p>
@@ -160,7 +160,7 @@ export default function ServiceDetails() {
 
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg mb-4">Why Choose Us</h3>
+                  <h3 className="font-heading font-extrabold text-lg mb-4">Why Choose Us</h3>
                   <ul className="space-y-3">
                     {[
                       "Verified & trained professionals",
@@ -180,7 +180,7 @@ export default function ServiceDetails() {
 
               <Card className="bg-primary text-primary-foreground">
                 <CardContent className="p-6 text-center">
-                  <h3 className="font-semibold text-lg mb-2">Need Help?</h3>
+                  <h3 className="font-heading font-extrabold text-lg mb-2">Need Help?</h3>
                   <p className="text-sm opacity-90 mb-4">
                     Call us for instant booking or queries
                   </p>

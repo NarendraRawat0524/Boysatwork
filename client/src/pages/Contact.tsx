@@ -75,7 +75,7 @@ export default function Contact() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <Badge variant="secondary" className="mb-4">Contact Us</Badge>
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-heading font-extrabold mb-4">
             Get in Touch
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -109,7 +109,7 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           <div>
-            <h2 className="text-2xl font-bold mb-6">Visit Our Office</h2>
+            <h2 className="text-2xl font-heading font-extrabold mb-6">Visit Our Office</h2>
             <Card>
               <CardContent className="p-6">
                 <div className="space-y-4">
@@ -164,7 +164,7 @@ export default function Contact() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            <h2 className="text-2xl font-heading font-extrabold mb-6">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {faqs.map((faq, index) => (
                 <Card key={index}>
@@ -179,7 +179,7 @@ export default function Contact() {
         </div>
 
         <div className="bg-primary text-primary-foreground rounded-2xl p-8 md:p-12 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
+          <h2 className="text-2xl md:text-3xl font-heading font-extrabold mb-4">
             Ready to Book a Service?
           </h2>
           <p className="text-lg opacity-90 mb-6 max-w-2xl mx-auto">

@@ -14,13 +14,13 @@ function RenderSection({ section, index }: { section: BlogSection; index: number
   switch (section.type) {
     case "heading":
       return (
-        <h2 className="text-2xl font-bold mt-8 mb-4" data-testid={`heading-${index}`}>
+        <h2 className="text-2xl font-heading font-extrabold mt-8 mb-4" data-testid={`heading-${index}`}>
           {section.text}
         </h2>
       );
     case "subheading":
       return (
-        <h3 className="text-xl font-semibold mt-6 mb-3" data-testid={`subheading-${index}`}>
+        <h3 className="text-xl font-heading font-extrabold mt-6 mb-3" data-testid={`subheading-${index}`}>
           {section.text}
         </h3>
       );
@@ -104,7 +104,7 @@ export default function BlogPost() {
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-4xl font-bold mb-6" data-testid="text-blog-post-title">
+            <h1 className="text-3xl md:text-4xl font-heading font-extrabold mb-6" data-testid="text-blog-post-title">
               {post.title}
             </h1>
 

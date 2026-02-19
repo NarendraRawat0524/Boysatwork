@@ -55,7 +55,7 @@ export default function About() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <Badge variant="secondary" className="mb-4">About Us</Badge>
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-heading font-extrabold mb-4">
             Your Trusted Home Service Partner
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -81,7 +81,7 @@ export default function About() {
               <Target className="h-5 w-5 text-primary" />
               <Badge variant="secondary">Our Mission</Badge>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+            <h2 className="text-2xl md:text-3xl font-heading font-extrabold mb-4">
               Making Home Services Simple & Reliable
             </h2>
             <p className="text-muted-foreground mb-6 leading-relaxed">
@@ -114,7 +114,7 @@ export default function About() {
         <div className="mb-16">
           <div className="text-center mb-10">
             <Badge variant="secondary" className="mb-4">Our Values</Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">What We Stand For</h2>
+            <h2 className="text-2xl md:text-3xl font-heading font-extrabold">What We Stand For</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
@@ -134,7 +134,7 @@ export default function About() {
         <div className="mb-16">
           <div className="text-center mb-10">
             <Badge variant="secondary" className="mb-4">Our Team</Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">Expert Professionals</h2>
+            <h2 className="text-2xl md:text-3xl font-heading font-extrabold">Expert Professionals</h2>
             <p className="text-muted-foreground mt-2">A team of 50+ verified experts ready to serve you</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
@@ -152,7 +152,7 @@ export default function About() {
         <div className="bg-muted/50 rounded-2xl p-8 md:p-12">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">Visit Our Office</h2>
+              <h2 className="text-2xl md:text-3xl font-heading font-extrabold mb-4">Visit Our Office</h2>
               <div className="space-y-3 text-muted-foreground">
                 <p><strong className="text-foreground">Address:</strong> {businessInfo.address}</p>
                 <p><strong className="text-foreground">Landmark:</strong> {businessInfo.landmark}</p>
