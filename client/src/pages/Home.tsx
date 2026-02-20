@@ -10,6 +10,8 @@ import { services, businessInfo } from "@/lib/services";
 import { getLatestBlogPosts } from "@/lib/blogPosts";
 import { useSEO } from "@/hooks/useSEO";
 import { format } from "date-fns";
+import visionImg from "@/assets/images/vision-img.png";
+import missionImg from "@/assets/images/mission-img.png";
 
 const whyChooseUs = [
   {
@@ -163,52 +165,70 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 bg-background" data-testid="section-vision-mission">
+      <section className="py-16 bg-background" data-testid="section-vision">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <Badge variant="secondary" className="mb-4">Who We Are</Badge>
-            <h2 className="font-heading text-3xl md:text-4xl font-extrabold mb-4">
-              Our Vision & Mission
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Building a future where quality home services are accessible, affordable, and just a click away
-            </p>
+          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <div className="md:w-1/2 space-y-5" data-testid="vision-text">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <Eye className="h-6 w-6 text-primary" />
+                </div>
+                <Badge variant="secondary">Our Vision</Badge>
+              </div>
+              <h2 className="font-heading text-3xl md:text-4xl font-extrabold">
+                Building a Trusted Future for Home Services
+              </h2>
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                To become Delhi NCR's most trusted and preferred home services platform, where every household has access to skilled, verified professionals for all their maintenance and repair needs.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                We envision a world where homeowners never have to worry about finding reliable service providers. Our goal is to set the gold standard for quality, transparency, and customer satisfaction in the home services industry.
+              </p>
+            </div>
+            <div className="md:w-1/2" data-testid="vision-image">
+              <div className="rounded-2xl overflow-hidden shadow-xl">
+                <img
+                  src={visionImg}
+                  alt="Our vision for trusted home services"
+                  className="w-full h-72 md:h-96 object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="hover-elevate">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center flex-shrink-0">
-                    <Eye className="h-7 w-7 text-primary" />
-                  </div>
-                  <h3 className="font-heading text-2xl font-extrabold">Our Vision</h3>
+      <section className="py-16 bg-muted/30" data-testid="section-mission">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
+            <div className="md:w-1/2 space-y-5" data-testid="mission-text">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <Target className="h-6 w-6 text-primary" />
                 </div>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  To become Delhi NCR's most trusted and preferred home services platform, where every household has access to skilled, verified professionals for all their maintenance and repair needs.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  We envision a world where homeowners never have to worry about finding reliable service providers. Our goal is to set the gold standard for quality, transparency, and customer satisfaction in the home services industry.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="hover-elevate">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center flex-shrink-0">
-                    <Target className="h-7 w-7 text-primary" />
-                  </div>
-                  <h3 className="font-heading text-2xl font-extrabold">Our Mission</h3>
-                </div>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  To deliver exceptional home services through a network of trained, background-verified professionals while maintaining transparent pricing and ensuring complete customer satisfaction on every job.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  We are committed to empowering local skilled workers with fair wages and growth opportunities, creating a win-win ecosystem for both service providers and customers across Delhi NCR.
-                </p>
-              </CardContent>
-            </Card>
+                <Badge variant="secondary">Our Mission</Badge>
+              </div>
+              <h2 className="font-heading text-3xl md:text-4xl font-extrabold">
+                Delivering Excellence in Every Service
+              </h2>
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                To deliver exceptional home services through a network of trained, background-verified professionals while maintaining transparent pricing and ensuring complete customer satisfaction on every job.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                We are committed to empowering local skilled workers with fair wages and growth opportunities, creating a win-win ecosystem for both service providers and customers across Delhi NCR.
+              </p>
+            </div>
+            <div className="md:w-1/2" data-testid="mission-image">
+              <div className="rounded-2xl overflow-hidden shadow-xl">
+                <img
+                  src={missionImg}
+                  alt="Our mission of skilled craftsmanship"
+                  className="w-full h-72 md:h-96 object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
