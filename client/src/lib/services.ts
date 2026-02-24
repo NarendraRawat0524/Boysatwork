@@ -111,7 +111,7 @@ export const services: Service[] = [
     icon: Wind,
     color: "text-cyan-600",
     bgColor: "bg-cyan-50 dark:bg-cyan-950",
-    image: "https://images.unsplash.com/photo-1631545806609-8f5c97a37e8f?w=800&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&h=600&fit=crop",
     rating: 4.9,
     reviewCount: 4120,
     subServices: [
